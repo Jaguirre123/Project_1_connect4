@@ -135,14 +135,31 @@ tr.row td {
     }
 
     #wrapper {
-        border: none;
+        border-top: 10px dashed red;
+        border-bottom: 10px dashed red;
+        border-right: none;
+        border-left: none;
     }
 
     table {
-        width: 640px;
+        width: 395px;
     }
 
-    footer p {
+    tr.row td {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        margin: 5px;
+        background-color: white;
+        display: inline-block; 
+        box-shadow: 0 0 8px black;
+    }
+
+    .footOne p {
         font-size: 25px;
+    }
+
+    .footTwo p {
+        font-size: 20px;
     }
 }
