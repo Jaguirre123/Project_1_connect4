@@ -124,3 +124,25 @@ tr.row td {
     background-color: black !important;
     opacity: 0.5;
 }
+
+@media  (max-width: 700px) {
+    .cover-container {
+        width: 85%;
+    }
+
+    .cover-heading {
+        font-size: 50px;
+    }
+
+    #wrapper {
+        border: none;
+    }
+
+    table {
+        width: 640px;
+    }
+
+    footer p {
+        font-size: 25px;
+    }
+}
