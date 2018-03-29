@@ -111,6 +111,7 @@ tr.row td {
     background-color: white;
     display: inline-block; 
     box-shadow: 0 0 8px black;
+    cursor: pointer;
 }
   
 .newmove:hover {
@@ -125,7 +126,7 @@ tr.row td {
     opacity: 0.5;
 }
 
-@media  (max-width: 700px) {
+@media (max-width: 700px) {
     .cover-container {
         width: 85%;
     }
@@ -147,12 +148,7 @@ tr.row td {
 
     tr.row td {
         height: 45px;
-        width: 45px;
-        border-radius: 50%;
-        margin: 5px;
-        background-color: white;
-        display: inline-block; 
-        box-shadow: 0 0 8px black;
+        width: 46px;
     }
 
     .footOne p {
