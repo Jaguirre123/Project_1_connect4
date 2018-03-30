@@ -22,7 +22,6 @@ var board, turn, winner, timerId;
 
 /*----- cached element references -----*/
 var message = document.getElementById('message');
-// var cells = document.querySelectorAll('td');
 var wrapper = document.querySelector('#wrapper');
 
 /*----- event listeners -----*/

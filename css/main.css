@@ -1,12 +1,11 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Audiowide', cursive;    
+}
+ 
  html, body {
     height: 100vh;
     margin: 0;
-}
-
-* {
-    box-sizing: border-box;
-    /* font-family: 'Love Ya Like A Sister', cursive; */
-    font-family: 'Audiowide', cursive;    
 }
 
 .mainBod {
@@ -17,7 +16,6 @@
     border: 10px dashed red;
     text-align: center;
     box-shadow: inset 0 0 35px black;
-    /* background-image: -webkit-linear-gradient(red, white); */
 }
 
 .mainImg {
@@ -35,7 +33,6 @@
     background-image: -webkit-linear-gradient(red, white);
     border-radius: 20px;
     box-shadow: 0 0 20px black;
-    /* border: 4px dotted black; */
     z-index: 2;
 
 }
@@ -60,8 +57,7 @@
     color: yellow;
     -webkit-text-stroke: 2px red;
     text-shadow: 0 0 20px black;
-    /* background-color: white; */
-    border: 1px das/hed red;
+    border: 1px dashed red;
 }
 
 footer p {
@@ -114,14 +110,12 @@ tr.row td {
 }
   
 .newmove:hover {
-    /* background-color: rgba(0, 0, 0, 0.2) !important; */
     background-color: red !important;
     opacity: 0.5;
     cursor: pointer;
 }
 
 .newmove2:hover {
-    /* background-color: rgba(0, 0, 0, 0.2) !important; */
     background-color: black !important;
     opacity: 0.5;
     cursor: pointer;
