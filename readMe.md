@@ -21,3 +21,6 @@ Connect Four is a solved game. The first player can always win by playing the ri
 ## Link to Game
 
 [Click here to play!](http://Jaguirre123.github.io/Project_1_connect4)
+
+## Next Step
+* create option for 2 players or to play against the computer(AI)
