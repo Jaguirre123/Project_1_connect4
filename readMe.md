@@ -10,7 +10,10 @@ Connect Four is a solved game. The first player can always win by playing the ri
 <br>
 <img src="https://i.imgur.com/QuUzPOw.png"/>
 <br>
-<video src="sounds/gameVideo.mp4"/>
+<video width="320" height="240" controls>
+  <source src="sounds/gameVideo.mp4" type="video/mp4">
+</video>
+
 
 ## Technologies Used
 
