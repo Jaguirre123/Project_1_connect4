@@ -6,14 +6,24 @@ var lookup = {
 };
 
 var coinDrop = new Audio("sounds/350874__cabled-mess__coin-c-08.wav");
+var bell = new Audio("sounds/boxing-bell.mp3");
+var champ = new Audio("sounds/yanp.mp3");
+var laugh = new Audio ("sounds/hahahahihihihehehe.mp3");
+var sparta = new Audio ("sounds/thisissparta.swf.mp3");
+var smooth = new Audio ("sounds/1_82.mp3");
+var congrats = new Audio ("sounds/congrats.mp3");
+var easy = new Audio ("sounds/easy.mp3");
+var homer = new Audio ("sounds/homer.mp3");
+var petergee = new Audio ("sounds/petergee.mp3");
 
 /*----- app's state (variables) -----*/
-var board, turn, winner;
+var board, turn, winner, timerId;
 
 
 /*----- cached element references -----*/
 var message = document.getElementById('message');
-var cells = document.querySelectorAll('td');
+// var cells = document.querySelectorAll('td');
+var wrapper = document.querySelector('#wrapper');
 
 /*----- event listeners -----*/
 document.querySelector('table').addEventListener('click', handleClick);
@@ -22,11 +32,16 @@ document.getElementById('reset').addEventListener('click', init);
 
 /*----- functions -----*/
 
+
+var sounds = [sparta, champ, laugh, smooth, congrats, easy, homer, petergee];
+function getRandomSoundsIdx(max) {
+  return Math.floor(Math.random() * sounds.length);
+}
+
 // handleClick function
 function handleClick(e) {
-  if (winner) return;
+  if (winner || e.target.tagName !== "TD") return;
   // obtain idx of square
-  e.target.tagName === "TD";
   var colIdx = parseInt(e.target.id.charAt(3));
   var rowIdx = board[colIdx].indexOf(null);
   if (rowIdx === -1) return;
@@ -35,6 +50,7 @@ function handleClick(e) {
   turn *= -1;
   coinDrop.play();
   winner = getWinner();
+  if (winner) sounds[getRandomSoundsIdx(sounds.length)].play();
   render();
 }
 
@@ -51,7 +67,7 @@ function getWinner() {
     return checkUpperLeftDiag();
   } else {
     return false;
-  }
+   } 
 }
 
 
@@ -101,35 +117,36 @@ function checkUpperLeftDiag() {
   return null;
 }
 
+function randomRgb() {
+    var col =  "rgb("
+    + randomColor(255) + ","
+    + randomColor(255) + ","
+    + randomColor(255) + ")";
+    wrapper.style.backgroundColor = col;
+}
+function randomColor(num) {          
+    return Math.floor(Math.random() * num);
+}     
+
 // render function
 function render() {
   board.forEach(function (colArr, colIdx) {
     var foundNull = false;
     colArr.forEach(function (val, rowIdx) {
       var td = document.getElementById(`r${rowIdx}c${colIdx}`);
-      if (winner === 'T') {
-        message.innerHTML = 'Rats, another tie!';
-      } else if (winner) {
-        message.innerHTML = `Congrats ${lookup[winner].toUpperCase()}!`;
+       if (winner) {
+        message.innerHTML = `${lookup[winner].toUpperCase()} WINS!`;
+        randomRgb();
+        if (!timerId) timerId = setInterval(randomRgb, 100);
       } else {
-        message.innerHTML = `${lookup[turn].toUpperCase()}'s Turn`
+        message.innerHTML = `${lookup[turn].toUpperCase()}'s Turn`;
+        wrapper.style.borderColor = lookup[turn];
+        message.style.color = lookup[turn];
       }
-      
       td.style.backgroundColor = lookup[val];
-
-      if (winner) return;
-
-      if (!val && !foundNull && winner && turn === 1) {
-        td.className = 'newmove';
-        foundNull = true;
-      } else if (!val && !foundNull && winner && turn === -1) {
-        td.className = 'newmove2';
-        foundNull = true;
-      } else {
-        td.className = '';
-      }
-      document.querySelector('#wrapper').style.borderColor = lookup[turn];
-      message.style.color = lookup[turn];
+      var addClass = turn === 1 ?  'newmove' :  'newmove2';
+      td.className = (!winner && !val && !foundNull) ? addClass : '';
+      if (!val && !foundNull) foundNull = true;
     });
   });
 }
@@ -148,6 +165,35 @@ function init() {
   ];
   turn = 1;
   winner = null;
+  clearInterval(timerId);
+  timerId = null;
+  bell.play();
+
+  sparta.pause();
+  sparta.currentTime = 0;
+
+  champ.pause();
+  champ.currentTime = 0;
+
+  laugh.pause();
+  laugh.currentTime = 0;
+
+  smooth.pause();
+  smooth.currentTime = 0;
+
+  congrats.pause();
+  congrats.currentTime = 0;
+
+  easy.pause();
+  easy.currentTime = 0;
+
+  homer.pause();
+  homer.currentTime = 0;
+
+  petergee.pause();
+  petergee.currentTime = 0;
+
+  wrapper.style.backgroundColor = 'white';
   render();
 }
 
