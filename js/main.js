@@ -15,6 +15,7 @@ var congrats = new Audio ("sounds/congrats.mp3");
 var easy = new Audio ("sounds/easy.mp3");
 var homer = new Audio ("sounds/homer.mp3");
 var petergee = new Audio ("sounds/petergee.mp3");
+var sounds = [sparta, champ, laugh, smooth, congrats, easy, homer, petergee];
 
 /*----- app's state (variables) -----*/
 var board, turn, winner, timerId;
@@ -31,11 +32,20 @@ document.getElementById('reset').addEventListener('click', init);
 
 /*----- functions -----*/
 
-
-var sounds = [sparta, champ, laugh, smooth, congrats, easy, homer, petergee];
 function getRandomSoundsIdx(max) {
   return Math.floor(Math.random() * sounds.length);
 }
+
+function randomRgb() {
+  var col =  "rgb("
+  + randomColor(255) + ","
+  + randomColor(255) + ","
+  + randomColor(255) + ")";
+  wrapper.style.backgroundColor = col;
+}
+function randomColor(num) {          
+  return Math.floor(Math.random() * num);
+}   
 
 // handleClick function
 function handleClick(e) {
@@ -114,18 +124,7 @@ function checkUpperLeftDiag() {
     }
   } 
   return null;
-}
-
-function randomRgb() {
-    var col =  "rgb("
-    + randomColor(255) + ","
-    + randomColor(255) + ","
-    + randomColor(255) + ")";
-    wrapper.style.backgroundColor = col;
-}
-function randomColor(num) {          
-    return Math.floor(Math.random() * num);
-}     
+}  
 
 // render function
 function render() {
